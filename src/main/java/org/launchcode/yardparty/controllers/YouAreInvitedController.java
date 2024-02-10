@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class YouAreInvitedController {
 
     @GetMapping("/")
-    @ResponseBody
-
     public String getYouAreInvitedPageContent() {
-        return "You are invited!";
+        return "index";
     }
 }

@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class FormController {
 
     @GetMapping("/rsvp-form")
-    @ResponseBody
     public String getFormPageContent() {
-        return "RSVP Form";
+        return "rsvp/form";
     }
 
 }

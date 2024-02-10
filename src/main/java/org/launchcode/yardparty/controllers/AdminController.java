@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class AdminController {
 
     @GetMapping("/admin")
-    @ResponseBody
     public String getAdminPageContent() {
-        return "Admin page";
+        return "admin/admin";
     }
 }
