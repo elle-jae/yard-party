@@ -6,7 +6,10 @@
 </head>
 <body>
 <p>List of Names</p>
-<p th:text = "${lastName}">name here</p>
-
+<div>
+    <ol>
+        <li th:each="item : ${name}" th:text="${item}"></li>
+    </ol>
+</div>
 </body>
 </html>

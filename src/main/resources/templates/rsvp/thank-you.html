@@ -9,7 +9,7 @@
 <div>
 <p th:text = "${lastName}">name here</p>
    <ol>
-    <li th:each="name : ${firstNames}" th:text="${}"></li>
+    <li th:each="item : ${name}" th:text="${item}"></li>
    </ol>
 </div>
 <p>text</p>

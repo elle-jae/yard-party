@@ -20,7 +20,7 @@ public class FormController {
     @GetMapping("admin-list")
     public String displayFirstNames(Model model) {
         model.addAttribute("lastName", "Smith");
-        model.addAttribute("fristName", firstNames);
+        model.addAttribute("name", firstNames);
         return "admin/admin";
     }
 
