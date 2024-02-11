@@ -2,11 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8"/>
-    <title>Admin Page</title>
+    <title>Thank you!</title>
 </head>
 <body>
-<p>List of Names</p>
+<p> Thank you for your RSVP! </p>
+<div>
 <p th:text = "${lastName}">name here</p>
-
+   <ol>
+    <li th:each="name : ${firstNames}" th:text="${}"></li>
+   </ol>
+</div>
+<p>text</p>
 </body>
 </html>
