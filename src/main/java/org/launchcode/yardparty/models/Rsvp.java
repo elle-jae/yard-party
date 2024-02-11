@@ -4,11 +4,15 @@ import java.util.Objects;
 
 public class Rsvp {
 
-    private int id;
+
+    private  int id;
+
     private static int nextId = 1;
+
     private String name;
 
-    public Rsvp(int id, String name) {
+
+    public Rsvp(String name) {
         this.id = nextId;
         nextId++;
         this.name = name;
@@ -30,8 +34,8 @@ public class Rsvp {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Rsvp user = (Rsvp) o;
-        return id == user.id && Objects.equals(name, user.name);
+        Rsvp rsvp = (Rsvp) o;
+        return id == rsvp.id && Objects.equals(name, rsvp.name);
     }
 
     @Override
@@ -41,8 +45,9 @@ public class Rsvp {
 
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
+        return "Rsvp{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

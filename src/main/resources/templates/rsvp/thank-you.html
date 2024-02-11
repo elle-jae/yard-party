@@ -14,8 +14,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="item : ${firstName}">
-                <td><span th:text="${item}"></span></td>
+            <tr th:each="rsvp : ${rsvps}">
+<!--                <td th:text="${rsvp}"></td>-->
+                <td th:text="${rsvp.name}"></td>
                 </tr>
         </tbody>
     </table>
