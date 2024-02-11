@@ -19,15 +19,13 @@ public class FormController {
 
     @GetMapping("admin-list")
     public String displayFirstNames(Model model) {
-        model.addAttribute("lastName", "Smith");
-        model.addAttribute("name", firstNames);
+        model.addAttribute("firstName", firstNames);
         return "admin/admin";
     }
 
     @GetMapping("thank-you")
     public String displayThankYou(Model model) {
-        model.addAttribute("lastName", "Smith");
-        model.addAttribute("name", firstNames);
+        model.addAttribute("firstName", firstNames);
         return "rsvp/thank-you";
     }
 
@@ -37,8 +35,8 @@ public class FormController {
     }
 
     @PostMapping
-    public String processForm(@RequestParam String name){
-       firstNames.add(name);
+    public String processForm(@RequestParam String firstName){
+       firstNames.add(firstName);
         return "redirect:rsvp/thank-you";
     }
 }

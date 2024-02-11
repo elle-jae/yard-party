@@ -7,11 +7,18 @@
 <body>
 <p> Thank you for your RSVP! </p>
 <div>
-<p th:text = "${lastName}">name here</p>
-   <ol>
-    <li th:each="item : ${name}" th:text="${item}"></li>
-   </ol>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item : ${firstName}">
+                <td><span th:text="${item}"></span></td>
+                </tr>
+        </tbody>
+    </table>
 </div>
-<p>text</p>
 </body>
 </html>
