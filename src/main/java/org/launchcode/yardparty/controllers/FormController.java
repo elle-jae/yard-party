@@ -36,8 +36,8 @@ public class FormController {
     }
 
     @PostMapping
-    public String processForm(@RequestParam String firstName, @RequestParam String lastName){
-          RsvpData.add(new Rsvp(firstName, lastName));
+    public String processForm(@RequestParam String firstName, @RequestParam String lastName, @RequestParam(required = false) boolean attendance){
+          RsvpData.add(new Rsvp(firstName, lastName, attendance));
         return "redirect:rsvp/thank-you";
     }
 }

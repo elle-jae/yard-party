@@ -14,10 +14,12 @@ public class Rsvp {
 
     private String lastName;
 
+    private boolean attendance;
 
-    public Rsvp(String firstName, String lastName) {
+    public Rsvp(String firstName, String lastName, boolean attendance) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.attendance = attendance;
         this.id = nextId;
         nextId++;
     }
@@ -42,18 +44,25 @@ public class Rsvp {
         this.lastName = lastName;
     }
 
+    public boolean isAttendance() {
+        return attendance;
+    }
+
+    public void setAttendance(boolean attendance) {
+        this.attendance = attendance;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Rsvp rsvp = (Rsvp) o;
-        return id == rsvp.id &&  Objects.equals(firstName, rsvp.firstName) && Objects.equals(lastName, rsvp.lastName);
+        return id == rsvp.id && attendance == rsvp.attendance && Objects.equals(firstName, rsvp.firstName) && Objects.equals(lastName, rsvp.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName);
+        return Objects.hash(id, firstName, lastName, attendance);
     }
 
     @Override
@@ -62,6 +71,7 @@ public class Rsvp {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", attendance=" + attendance +
                 '}';
     }
 }
