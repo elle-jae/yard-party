@@ -15,12 +15,14 @@
             <th>Last Name</th>
             <th>Email</th>
             <th>Attending</th>
+            <th>Attending</th>
         </tr>
         <tr th:each="rsvp : ${rsvps}">
             <td th:text="${rsvp.firstName}"></td>
             <td th:text="${rsvp.lastName}"></td>
             <td th:text="${rsvp.email}"></td>
             <td th:text="${rsvp.attendance} ? 'Yes' : 'No'"></td>
+            <td th:text="${rsvp.status}"></td>
         </tr>
     </table>
 </div>

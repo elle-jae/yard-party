@@ -2,6 +2,7 @@ package org.launchcode.yardparty.controllers;
 
 import jakarta.validation.Valid;
 import org.launchcode.yardparty.data.RsvpData;
+import org.launchcode.yardparty.models.Attendance;
 import org.launchcode.yardparty.models.Rsvp;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +34,7 @@ public class FormController {
     public String showForm(Model model) {
         model.addAttribute("title", "RSVP Form");
         model.addAttribute("rsvp", new Rsvp());
+        model.addAttribute("status", Attendance.values());
         return "rsvp/form";
     }
 

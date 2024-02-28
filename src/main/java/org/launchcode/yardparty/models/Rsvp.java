@@ -29,12 +29,15 @@ public class Rsvp {
 
     private boolean attendance;
 
-    public Rsvp(String firstName, String lastName, String email, boolean attendance) {
+    private Attendance status;
+
+    public Rsvp(String firstName, String lastName, String email, boolean attendance, Attendance status ) {
         this();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.attendance = attendance;
+        this.status = status;
     }
 
     public Rsvp() {
@@ -76,6 +79,14 @@ public class Rsvp {
 
     public void setAttendance(boolean attendance) {
         this.attendance = attendance;
+    }
+
+    public Attendance getStatus() {
+        return status;
+    }
+
+    public void setStatus(Attendance status) {
+        this.status = status;
     }
 
     @Override

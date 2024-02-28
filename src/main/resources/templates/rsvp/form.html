@@ -7,19 +7,28 @@
 <body>
 <p th:text="${errorMsg}"></p>
     <form method="post">
-        <label>Name
+        <label>Name <br>
         <input type="text" th:field="${rsvp.firstName}" placeholder="first name"><br>
         <input type="text" th:field="${rsvp.lastName}" placeholder="last name"><br>
         </label>
         <p th:errors="${rsvp.firstName}"></p>
         <p th:errors="${rsvp.lastName}"></p>
-        <label>Email<
+        <label>Email <br>
         <input type="text" th:field="${rsvp.email}" placeholder="email@email.com"><br>
         </label>
         <p th:errors="${rsvp.email}"></p>
         <label>Attendance
         <input type="checkbox" name="attendance"><label>Yes, I'm Attending</label><br>
         </label>
+        <label>Are you coming?<br>
+        <select th:field="${rsvp.status}" required="required">
+            <option value="" selected data-default>Select</option>
+            <option th:each="answer : ${status}"
+                    th:value="${answer}"
+                    th:text="${answer.displayName}"
+                    ></option>
+        </select>
+        </label><br>
         <input type="submit" value="RSVP!">
     </form>
 </body>
