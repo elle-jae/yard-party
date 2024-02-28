@@ -1,5 +1,6 @@
 package org.launchcode.yardparty.controllers;
 
+import org.launchcode.yardparty.data.RsvpData;
 import org.launchcode.yardparty.models.Rsvp;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,14 +19,14 @@ public class FormController {
     private static List<Rsvp> rsvps = new ArrayList<>();
 
     @GetMapping("admin-list")
-    public String displayFirstNames(Model model) {
-        model.addAttribute("rsvps", rsvps);
+    public String displayNames(Model model) {
+        model.addAttribute("rsvps", RsvpData.getAll());
         return "admin/admin";
     }
 
     @GetMapping("thank-you")
     public String displayThankYou(Model model) {
-        model.addAttribute("rsvps", rsvps);
+        model.addAttribute("rsvps", RsvpData.getAll());
         return "rsvp/thank-you";
     }
 
@@ -35,8 +36,8 @@ public class FormController {
     }
 
     @PostMapping
-    public String processForm(@RequestParam String name){
-        rsvps.add(new Rsvp(name));
+    public String processForm(@RequestParam String firstName, @RequestParam String lastName){
+          RsvpData.add(new Rsvp(firstName, lastName));
         return "redirect:rsvp/thank-you";
     }
 }

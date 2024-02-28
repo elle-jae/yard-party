@@ -5,21 +5,11 @@
     <title>Thank you!</title>
 </head>
 <body>
-<p> Thank you for your RSVP! </p>
+<div th:each="rsvp : ${rsvps}">
+    <p th:text="${'Thank you for your RSVP, ' + rsvp.firstName + '!'}"></p>
+</div>
 <div>
-    <table>
-        <thead>
-            <tr>
-                <th>First Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="rsvp : ${rsvps}">
-<!--                <td th:text="${rsvp}"></td>-->
-                <td th:text="${rsvp.name}"></td>
-                </tr>
-        </tbody>
-    </table>
+    <p><a href="/rsvp" th:href="@{/rsvp}">Return to RSVP</a></p>
 </div>
 </body>
 </html>
