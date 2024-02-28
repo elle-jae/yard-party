@@ -5,7 +5,9 @@
     <title>Admin Page</title>
 </head>
 <body>
-<p>List of RSVPs</p>
+<h1>List of RSVPs</h1>
+<p th:unless="${rsvps} and ${rsvps.size()}">No RSVPS...yet!</p>
+
 <div>
     <table>
         <tr>

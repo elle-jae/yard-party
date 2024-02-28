@@ -1,13 +1,12 @@
 package org.launchcode.yardparty.controllers;
 
+import jakarta.validation.Valid;
 import org.launchcode.yardparty.data.RsvpData;
 import org.launchcode.yardparty.models.Rsvp;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,13 +31,26 @@ public class FormController {
 
     @GetMapping("")
     public String showForm(Model model) {
+        model.addAttribute("title", "RSVP Form");
+        model.addAttribute("rsvp", new Rsvp());
         return "rsvp/form";
     }
 
     @PostMapping
-    public String processForm(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email, @RequestParam(required = false) boolean attendance){
-          RsvpData.add(new Rsvp(firstName, lastName, email, attendance));
+    public String processForm(@ModelAttribute @Valid Rsvp newRsvp, Errors errors, Model model){
+        if(errors.hasErrors()){
+            model.addAttribute("title", "RSVP Form");
+            model.addAttribute("errorMsg", "Missing required fields");
+            return "rsvp/form";
+        }
+        RsvpData.add(newRsvp);
         return "redirect:rsvp/thank-you";
     }
+
+//    @PostMapping
+//    public String processForm(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email, @RequestParam(required = false) boolean attendance){
+//          RsvpData.add(new Rsvp(firstName, lastName, email, attendance));
+//        return "redirect:rsvp/thank-you";
+//    }
 }
 

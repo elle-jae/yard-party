@@ -1,5 +1,10 @@
 package org.launchcode.yardparty.models;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 import java.util.Objects;
 
 
@@ -10,19 +15,29 @@ public class Rsvp {
 
     private static int nextId = 1;
 
+    @NotBlank (message = "First Name is required")
+    @Size(min = 1, max = 15)
     private String firstName;
 
+    @NotBlank (message = "Last Name is required")
+    @Size(min = 1, max = 25)
     private String lastName;
 
+    @NotBlank (message = "Email is required")
+    @Email
     private String email;
 
     private boolean attendance;
 
     public Rsvp(String firstName, String lastName, String email, boolean attendance) {
+        this();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.attendance = attendance;
+    }
+
+    public Rsvp() {
         this.id = nextId;
         nextId++;
     }
