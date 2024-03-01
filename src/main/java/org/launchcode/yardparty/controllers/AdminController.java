@@ -1,10 +1,10 @@
 package org.launchcode.yardparty.controllers;
 
+import org.launchcode.yardparty.data.RsvpData;
+import org.launchcode.yardparty.models.Rsvp;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-    private static List<String> firstNames = new ArrayList<>();
+
+    private static List<Rsvp> rsvps = new ArrayList<>();
 
     @GetMapping("")
     public String getAdminPageContent() {
@@ -20,9 +21,23 @@ public class AdminController {
     }
 
     @GetMapping("/rsvp-list")
-    public String displayFirstNames(Model model) {
-        model.addAttribute("lastName", "Smith");
-        model.addAttribute("name", firstNames);
+    public String displayRsvps(Model model) {
+        model.addAttribute("rsvps", RsvpData.getAll());
         return "admin/admin";
+    }
+
+    @GetMapping("delete")
+    public String showDeleteRsvpForm(Model model) {
+        model.addAttribute("title", "Delete RSVP");
+        model.addAttribute("rsvps", RsvpData.getAll());
+        return "admin/delete";
+    }
+
+    @PostMapping("delete")
+    public String processDeleteRsvpForm(@RequestParam(required = false) int[] rsvpIds) {
+       for(int id : rsvpIds) {
+           RsvpData.remove(id);
+       }
+       return "redirect:";
     }
 }

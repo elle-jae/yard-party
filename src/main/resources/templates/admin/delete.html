@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Delete RSVP</title>
+</head>
+<body>
+<h1>Delete RSVP(s)</h1>
+
+<form method="post">
+    <th:block th:each="rsvp : ${rsvps}">
+        <div>
+            <label>
+                <input type="checkbox" name="rsvpIds" th:value="${rsvp.id}">
+                <span th:text="${rsvp.firstName}"></span>
+                <span th:text="${rsvp.lastName}"></span>
+            </label>
+        </div>
+    </th:block>
+    <input type="submit" value="Delete Selected RSVP">
+</form>
+
+</body>
+</html>
