@@ -21,7 +21,7 @@ public class FormController {
     @GetMapping("admin-list")
     public String displayNames(Model model) {
         model.addAttribute("rsvps", RsvpData.getAll());
-        return "admin/admin";
+        return "admin/admin-list";
     }
 
     @GetMapping("thank-you")

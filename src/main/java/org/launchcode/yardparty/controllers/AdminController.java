@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("admin")
 public class AdminController {
 
     private static List<Rsvp> rsvps = new ArrayList<>();
@@ -23,10 +23,10 @@ public class AdminController {
     @GetMapping("/rsvp-list")
     public String displayRsvps(Model model) {
         model.addAttribute("rsvps", RsvpData.getAll());
-        return "admin/admin";
+        return "admin/admin-list";
     }
 
-    @GetMapping("delete")
+    @GetMapping("/delete")
     public String showDeleteRsvpForm(Model model) {
         model.addAttribute("title", "Delete RSVP");
         model.addAttribute("rsvps", RsvpData.getAll());
@@ -38,6 +38,6 @@ public class AdminController {
        for(int id : rsvpIds) {
            RsvpData.remove(id);
        }
-       return "redirect:";
+       return "redirect:/admin/rsvp-list";
     }
 }
