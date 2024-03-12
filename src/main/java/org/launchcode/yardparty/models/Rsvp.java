@@ -1,5 +1,8 @@
 package org.launchcode.yardparty.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
@@ -7,13 +10,12 @@ import jakarta.validation.constraints.Size;
 
 import java.util.Objects;
 
-
+@Entity
 public class Rsvp {
 
-
+@Id
+@GeneratedValue
     private  int id;
-
-    private static int nextId = 1;
 
     @NotBlank (message = "First Name is required")
     @Size(min = 1, max = 15)
@@ -32,7 +34,6 @@ public class Rsvp {
     private Attendance status;
 
     public Rsvp(String firstName, String lastName, String email, boolean attendance, Attendance status ) {
-        this();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -41,8 +42,6 @@ public class Rsvp {
     }
 
     public Rsvp() {
-        this.id = nextId;
-        nextId++;
     }
 
     public int getId() {
