@@ -2,8 +2,10 @@ package org.launchcode.yardparty.controllers;
 
 import jakarta.validation.Valid;
 import org.launchcode.yardparty.data.RsvpData;
+import org.launchcode.yardparty.data.RsvpRepository;
 import org.launchcode.yardparty.models.Attendance;
 import org.launchcode.yardparty.models.Rsvp;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -16,7 +18,9 @@ import java.util.List;
 @RequestMapping("rsvp")
 public class FormController {
 
-    private static List<Rsvp> rsvps = new ArrayList<>();
+    @Autowired
+    private RsvpRepository rsvpRepository;
+//    private static List<Rsvp> rsvps = new ArrayList<>();
 
     @GetMapping("admin-list")
     public String displayNames(Model model) {

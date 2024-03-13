@@ -1,7 +1,9 @@
 package org.launchcode.yardparty.controllers;
 
 import org.launchcode.yardparty.data.RsvpData;
+import org.launchcode.yardparty.data.RsvpRepository;
 import org.launchcode.yardparty.models.Rsvp;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +15,10 @@ import java.util.List;
 @RequestMapping("admin")
 public class AdminController {
 
-    private static List<Rsvp> rsvps = new ArrayList<>();
+    @Autowired
+    private RsvpRepository rsvpRepository;
+
+//    private static List<Rsvp> rsvps = new ArrayList<>();
 
     @GetMapping("")
     public String getAdminPageContent() {
