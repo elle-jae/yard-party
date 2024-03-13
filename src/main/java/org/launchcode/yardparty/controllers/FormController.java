@@ -1,7 +1,6 @@
 package org.launchcode.yardparty.controllers;
 
 import jakarta.validation.Valid;
-import org.launchcode.yardparty.data.RsvpData;
 import org.launchcode.yardparty.data.RsvpRepository;
 import org.launchcode.yardparty.models.Attendance;
 import org.launchcode.yardparty.models.Rsvp;
@@ -10,9 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("rsvp")
