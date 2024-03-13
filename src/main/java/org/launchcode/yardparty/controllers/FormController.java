@@ -24,13 +24,13 @@ public class FormController {
 
     @GetMapping("admin-list")
     public String displayNames(Model model) {
-        model.addAttribute("rsvps", RsvpData.getAll());
+        model.addAttribute("rsvps", rsvpRepository.findAll());
         return "admin/admin-list";
     }
 
     @GetMapping("thank-you")
     public String displayThankYou(Model model) {
-        model.addAttribute("rsvps", RsvpData.getAll());
+        model.addAttribute("rsvps", rsvpRepository.findAll());
         return "rsvp/thank-you";
     }
 
@@ -49,7 +49,7 @@ public class FormController {
             model.addAttribute("errorMsg", "Missing required fields");
             return "rsvp/form";
         }
-        RsvpData.add(newRsvp);
+        rsvpRepository.save(newRsvp);
         return "redirect:rsvp/thank-you";
     }
 

@@ -27,21 +27,21 @@ public class AdminController {
 
     @GetMapping("/rsvp-list")
     public String displayRsvps(Model model) {
-        model.addAttribute("rsvps", RsvpData.getAll());
+        model.addAttribute("rsvps", rsvpRepository.findAll());
         return "admin/admin-list";
     }
 
     @GetMapping("/delete")
     public String showDeleteRsvpForm(Model model) {
         model.addAttribute("title", "Delete RSVP");
-        model.addAttribute("rsvps", RsvpData.getAll());
+        model.addAttribute("rsvps", rsvpRepository.findAll());
         return "admin/delete";
     }
 
     @PostMapping("delete")
     public String processDeleteRsvpForm(@RequestParam(required = false) int[] rsvpIds) {
        for(int id : rsvpIds) {
-           RsvpData.remove(id);
+          rsvpRepository.deleteById(id);
        }
        return "redirect:/admin/rsvp-list";
     }
