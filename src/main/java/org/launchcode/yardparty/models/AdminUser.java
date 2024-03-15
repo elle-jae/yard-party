@@ -28,7 +28,7 @@ public class AdminUser {
     public AdminUser(String username, String password) {
         this.id = id;
         this.username = username;
-        this.pwHash encoder.encode(password);
+        this.pwHash = encoder.encode(password);
     }
 
 
