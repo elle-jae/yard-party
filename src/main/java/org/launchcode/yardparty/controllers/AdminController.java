@@ -41,4 +41,11 @@ public class AdminController {
        }
        return "redirect:/admin/rsvp-list";
     }
+
+    @GetMapping("/confirmation")
+    public String showRegistrationConfirmationPage (Model model) {
+        model.addAttribute("title", "Registration Confirmation");
+        return "admin/registration-confirmation";
+    }
+
 }

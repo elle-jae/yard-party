@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <meta charset="UTF-8"/>
+    <title>Registration Confirmation</title>
+</head>
+<body class="container">
+<h1>YOU ARE REGISTERED</h1>
+<hr th:replace="fragments :: headerRow">
+<p>Thank you for registering!</p>
+<p><a href="/admin/rsvp-list" th:href="@{/admin/rsvp-list}" class="btn btn-primary btn-sm">Go to Admin Portal</a></p>
+
+
+</body>
+</html>
