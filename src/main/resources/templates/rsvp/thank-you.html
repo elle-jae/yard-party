@@ -5,11 +5,16 @@
     <title>Thank you!</title>
 </head>
 <body class="container">
-<div th:each="rsvp : ${rsvps}">
-    <p th:text="${'Thank you for your RSVP, ' + rsvp.firstName + '!'}"></p>
-</div>
-<div>
-    <p><a href="/rsvp" th:href="@{/rsvp}">Return to RSVP</a></p>
+<h1>THANK YOU</h1>
+<hr th:replace="fragments :: headerRow">
+<p>Thank you for your RSVP!</p>
+<!--TO DO: create dyanmic variable name in confirmation-->
+<!--TO DO: create custom statement dependent on RSVP status-->
+
+<!--<div th:each="rsvp : ${rsvps}">-->
+<!--    <p th:text="${'Thank you for your RSVP, ' + rsvpName + '!'}"></p>-->
+<!--<div>-->
+    <p><a href="/rsvp" th:href="@{/rsvp}" class="btn btn-primary btn-sm">Return to RSVP</a></p>
 </div>
 </body>
 </html>

@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @Controller
 @RequestMapping("rsvp")
 public class FormController {
@@ -17,7 +19,7 @@ public class FormController {
     @Autowired
     private RsvpRepository rsvpRepository;
 //    private static List<Rsvp> rsvps = new ArrayList<>();
-
+    private String confirmationName;
     @GetMapping("admin-list")
     public String displayNames(Model model) {
         model.addAttribute("rsvps", rsvpRepository.findAll());
@@ -26,6 +28,7 @@ public class FormController {
 
     @GetMapping("thank-you")
     public String displayThankYou(Model model) {
+        model.addAttribute("title", "Thank You Confirmation");
         model.addAttribute("rsvps", rsvpRepository.findAll());
         return "rsvp/thank-you";
     }
@@ -43,6 +46,7 @@ public class FormController {
         if(errors.hasErrors()){
             model.addAttribute("title", "RSVP Form");
             model.addAttribute("errorMsg", "Missing required fields");
+            model.addAttribute("status", Attendance.values());
             return "rsvp/form";
         }
         rsvpRepository.save(newRsvp);

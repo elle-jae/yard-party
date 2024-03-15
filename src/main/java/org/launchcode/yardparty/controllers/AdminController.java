@@ -16,7 +16,8 @@ public class AdminController {
 //    private static List<Rsvp> rsvps = new ArrayList<>();
 
     @GetMapping("")
-    public String getAdminPageContent() {
+    public String getAdminPageContent(Model model) {
+        model.addAttribute("title", "Admin");
         return "admin/index";
     }
 

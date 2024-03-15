@@ -18,11 +18,11 @@ public class Rsvp {
     private  int id;
 
     @NotBlank (message = "First Name is required")
-    @Size(min = 1, max = 15)
+    @Size(min = 1, max = 15, message = "")
     private String firstName;
 
     @NotBlank (message = "Last Name is required")
-    @Size(min = 1, max = 25)
+    @Size(min = 1, max = 25, message = "")
     private String lastName;
 
     @NotBlank (message = "Email is required")

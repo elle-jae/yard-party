@@ -8,14 +8,16 @@
 <h1>List of RSVPs</h1>
 <p th:unless="${rsvps} and ${rsvps.size()}">No RSVPS...yet!</p>
 <div>
-    <table>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Attending</th>
-            <th>Attending</th>
-        </tr>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Attending</th>
+                <th>Attending</th>
+            </tr>
+        </thead>
         <tr th:each="rsvp : ${rsvps}">
             <td th:text="${rsvp.firstName}"></td>
             <td th:text="${rsvp.lastName}"></td>
@@ -25,9 +27,9 @@
         </tr>
     </table>
 </div>
-<div>
-    <p><a href="/rsvp" th:href="@{/rsvp}">Add RSVP</a></p>
-    <p><a href="/admin/delete" th:href="@{/admin/delete}">Delete RSVP</a></p>
+<div class="d-grid gap-2 d-md-block">
+    <a class="btn btn-primary btn-sm" href="/rsvp" th:href="@{/rsvp}">Add RSVP</a>
+    <a class="btn btn-primary btn-sm" href="/admin/delete" th:href="@{/admin/delete}">Delete RSVP</a>
 </div>
 </body>
 </html>

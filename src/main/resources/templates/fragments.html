@@ -8,9 +8,14 @@
 </head>
 <body class="container">
 
-<nav th:fragment="navigation">
-    <a href="/admin">Admin</a>
+<nav th:fragment="navigation" class="nav">
+    <a href="/admin" class="nav-item">Admin</a>
 </nav>
+
+<hr th:fragment="headerRow" class="bg-success border-5 border-top border-success">
+
+<hr th:fragment="headerRowAdmin" class="bg-primary border-5 border-top border-primary">
+
 
 </body>
 </html>
