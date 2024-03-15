@@ -1,5 +1,6 @@
 package org.launchcode.yardparty.controllers;
 
+import org.launchcode.yardparty.data.AdminUserRepository;
 import org.launchcode.yardparty.data.RsvpRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

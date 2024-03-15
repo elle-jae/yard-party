@@ -6,6 +6,7 @@
 </head>
 <body class="container">
 <h1>Delete RSVP(s)</h1>
+<hr th:replace="fragments :: headerRowAdmin">
 
 <form method="post">
     <th:block th:each="rsvp : ${rsvps}">

@@ -122,4 +122,10 @@ public class AuthenticationController {
 
         return "redirect:/admin/rsvp-list";
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request){
+        request.getSession().invalidate();
+        return "redirect:/login";
+    }
 }

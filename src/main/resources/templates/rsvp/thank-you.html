@@ -14,7 +14,8 @@
 <!--<div th:each="rsvp : ${rsvps}">-->
 <!--    <p th:text="${'Thank you for your RSVP, ' + rsvpName + '!'}"></p>-->
 <!--<div>-->
-    <p><a href="/rsvp" th:href="@{/rsvp}" class="btn btn-primary btn-sm">Return to RSVP</a></p>
+    <p><a th:if="${loggedInUser}" href="/rsvp" th:href="@{/rsvp}" class="btn btn-primary btn-sm">Add Another RSVP</a></p>
+    <a th:if="${loggedInUser}" class="btn btn-primary btn-sm" href="/admin/rsvp-list" th:href="@{/admin/rsvp-list}">Back to RSVP List</a>
 </div>
 </body>
 </html>

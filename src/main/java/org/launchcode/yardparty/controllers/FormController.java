@@ -1,5 +1,6 @@
 package org.launchcode.yardparty.controllers;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.launchcode.yardparty.data.RsvpRepository;
 import org.launchcode.yardparty.models.Attendance;
@@ -27,9 +28,10 @@ public class FormController {
     }
 
     @GetMapping("thank-you")
-    public String displayThankYou(Model model) {
+    public String displayThankYou(HttpServletRequest request,Model model) {
         model.addAttribute("title", "Thank You Confirmation");
         model.addAttribute("rsvps", rsvpRepository.findAll());
+        model.addAttribute("loggedInUser", request.isRequestedSessionIdValid());
         return "rsvp/thank-you";
     }
 

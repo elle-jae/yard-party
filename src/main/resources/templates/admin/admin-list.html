@@ -6,9 +6,10 @@
 </head>
 <body class="container">
 <h1>List of RSVPs</h1>
+<hr th:replace="fragments :: headerRowAdmin">
 <p th:unless="${rsvps} and ${rsvps.size()}">No RSVPS...yet!</p>
 <div>
-    <table class="table table-striped">
+    <table th:if="${rsvps}" class="table table-striped">
         <thead>
             <tr>
                 <th>First Name</th>
@@ -30,6 +31,7 @@
 <div class="d-grid gap-2 d-md-block">
     <a class="btn btn-primary btn-sm" href="/rsvp" th:href="@{/rsvp}">Add RSVP</a>
     <a class="btn btn-primary btn-sm" href="/admin/delete" th:href="@{/admin/delete}">Delete RSVP</a>
+    <a class="btn btn-primary btn-sm" href="/logout" th:href="@{/logout}">Log Out</a>
 </div>
 </body>
 </html>
