@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.launchcode.yardparty.data.AdminUserRepository;
 import org.launchcode.yardparty.models.AdminUser;
+import org.launchcode.yardparty.models.dto.LoginFormDTO;
 import org.launchcode.yardparty.models.dto.RegistrationFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -82,5 +83,43 @@ public class AuthenticationController {
         setUserInSession(request.getSession(), newUser);
 
         return "redirect:";
+    }
+
+    @GetMapping("/login")
+    public String displayLoginForm(Model model) {
+        model.addAttribute(new LoginFormDTO());
+        model.addAttribute("title", "Log In");
+        return "login";
+    }
+    @PostMapping("/login")
+    public String processLoginForm(@ModelAttribute @Valid LoginFormDTO loginFormDTO,
+                                   Errors errors, HttpServletRequest request,
+                                   Model model) {
+
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Log In");
+            model.addAttribute("errorMsg", "Missing required fields");
+            return "login";
+        }
+
+        AdminUser theUser = adminUserRepository.findByUsername(loginFormDTO.getUsername());
+
+        if (theUser == null) {
+            errors.rejectValue("username", "user.invalid", "The given username does not exist");
+            model.addAttribute("title", "Log In");
+            return "login";
+        }
+
+        String password = loginFormDTO.getPassword();
+
+        if (!theUser.isMatchingPassword(password)) {
+            errors.rejectValue("password", "password.invalid", "Invalid password");
+            model.addAttribute("title", "Log In");
+            return "login";
+        }
+
+        setUserInSession(request.getSession(), theUser);
+
+        return "redirect:/admin/rsvp-list";
     }
 }
